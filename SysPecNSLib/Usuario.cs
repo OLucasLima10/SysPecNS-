@@ -8,5 +8,6 @@ namespace SysPecNSLib
 {
     public class Usuario
     {
+
     }
 }

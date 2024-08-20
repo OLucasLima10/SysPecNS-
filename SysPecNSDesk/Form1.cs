@@ -100,5 +100,13 @@ namespace SysPecNSDesk
                 btnConfirma.Enabled = false;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Nivel nivel = new Nivel(textBox1.Text,textBox2.Text);
+            nivel.Inserir();
+            MessageBox.Show("Nível gravado com sucesso!!!!!!");
+            button1.Enabled = false;
+        }
     }
 }
