@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Org.BouncyCastle.Crypto.Prng;
+using MySql.Data.MySqlClient;
 
 namespace SysPecNSLib
 {
     public class Usuario
     {
-     
+
+        // private static MySqlCommand comando = Banco.Abrir();
         public int Id { get; set; }
         public string? Nome { get; set; }
         public string? Email { get; set; }
@@ -129,19 +131,40 @@ namespace SysPecNSLib
                    dr.GetBoolean(5)
                    );
             }
+            cmd.Connection.Close();
             return usuario;
         }
         public void Atualizar() 
-        { 
+        {
             // usuario: nome, senha, nível...
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_usuario_altera";
+            //cmd.Parameters.Add("spid", MySqlDbType.Int32).Value = Id;
+            cmd.Parameters.AddWithValue("spid",Id);
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
+            cmd.Parameters.AddWithValue("spsenha", Senha);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
         }
-        public void Arquivar()
-        { 
-        
+        public static void Arquivar(int id)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"update usuarios set ativo = 0 where id = {id}";
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
-        public void Restaurar() 
-        { 
-        
+        public static void Restaurar(int id) 
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"update usuarios set ativo = 1 where id = {id}";
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
         }
 
 
