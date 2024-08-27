@@ -48,19 +48,22 @@
             label6 = new Label();
             txtConfSenha = new TextBox();
             chkAtivo = new CheckBox();
+            btnEditar = new Button();
+            btnDeletar = new Button();
+            txtBusca = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
             // dgvUsuarios
             // 
             dgvUsuarios.AllowUserToAddRows = false;
-            dgvUsuarios.AllowUserToDeleteRows = false;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnEmail, clnNivel, clnAtivo });
-            dgvUsuarios.Location = new Point(79, 272);
+            dgvUsuarios.Location = new Point(79, 288);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.ReadOnly = true;
             dgvUsuarios.RowHeadersVisible = false;
+            dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuarios.Size = new Size(500, 150);
             dgvUsuarios.TabIndex = 0;
             // 
@@ -223,11 +226,40 @@
             chkAtivo.Text = "Ativo";
             chkAtivo.UseVisualStyleBackColor = true;
             // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(290, 216);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(75, 23);
+            btnEditar.TabIndex = 15;
+            btnEditar.Text = "&Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnDeletar
+            // 
+            btnDeletar.Location = new Point(432, 216);
+            btnDeletar.Name = "btnDeletar";
+            btnDeletar.Size = new Size(75, 23);
+            btnDeletar.TabIndex = 16;
+            btnDeletar.Text = "De&letar";
+            btnDeletar.UseVisualStyleBackColor = true;
+            // 
+            // txtBusca
+            // 
+            txtBusca.Location = new Point(79, 266);
+            txtBusca.Name = "txtBusca";
+            txtBusca.Size = new Size(500, 23);
+            txtBusca.TabIndex = 17;
+            txtBusca.TextChanged += txtBusca_TextChanged;
+            // 
             // FrmUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(663, 450);
+            Controls.Add(txtBusca);
+            Controls.Add(btnDeletar);
+            Controls.Add(btnEditar);
             Controls.Add(chkAtivo);
             Controls.Add(txtConfSenha);
             Controls.Add(label6);
@@ -273,5 +305,8 @@
         private Label label6;
         private TextBox txtConfSenha;
         private CheckBox chkAtivo;
+        private Button btnEditar;
+        private Button btnDeletar;
+        private TextBox txtBusca;
     }
 }
