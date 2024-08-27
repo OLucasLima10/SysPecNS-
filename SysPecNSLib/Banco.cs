@@ -21,8 +21,8 @@ namespace SysPecNSLib
         {
             // dados da conexão
             string strconn = @"server=127.0.0.1;database=syspecdb;user=root;password=";
-            MySqlConnection cn = new MySqlConnection(strconn);
-            MySqlCommand cmd = new MySqlCommand();
+            MySqlConnection cn = new(strconn);
+            MySqlCommand cmd = new();
             try // tratamento de excessão
             {
                 cn.Open();
