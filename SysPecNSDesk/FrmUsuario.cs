@@ -26,7 +26,7 @@ namespace SysPecNSDesk
             cmbNivel.DisplayMember = "Nome";
             cmbNivel.ValueMember = "Id";
             CarregaGrid();
-           
+
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace SysPecNSDesk
 
         private void txtBusca_TextChanged(object sender, EventArgs e)
         {
-            if (txtBusca.Text.Length>0)
+            if (txtBusca.Text.Length > 0)
             {
                 CarregaGrid(txtBusca.Text);
             }
@@ -73,11 +73,11 @@ namespace SysPecNSDesk
                 CarregaGrid();
             }
         }
-        private void CarregaGrid(string nome = "") 
+        private void CarregaGrid(string nome = "")
         {
 
             // preenchendo o datagrid com os usuários
-            var lista = Usuario.ObterLista(nome);  
+            var lista = Usuario.ObterLista(nome);
             dgvUsuarios.Rows.Clear();
             int cont = 0;
             foreach (var usuario in lista)
@@ -90,6 +90,47 @@ namespace SysPecNSDesk
                 dgvUsuarios.Rows[cont].Cells[4].Value = usuario.Ativo;
                 cont++;
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (VerificaControles())
+            {
+                var msg = MessageBox.Show("Deseja continuar o cadastro ?",
+                    "Cadastro de usuário",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1);
+                if (msg == DialogResult.No) this.Close();
+            }
+            else
+            {
+                Close();
+            }
+
+        }
+        private bool VerificaControles()
+        {
+            if (txtNome.Text != string.Empty
+                || txtEmail.Text != string.Empty
+                || txtSenha.Text != string.Empty
+                || txtConfSenha.Text != string.Empty)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = 0;
+            int posicaoLinha = dgvUsuarios.CurrentRow.Index;
+            id = Convert.ToInt32(dgvUsuarios.Rows[posicaoLinha].Cells[0].Value);
+            MessageBox.Show(id.ToString());
         }
     }
 }
