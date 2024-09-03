@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/SysPecNSLib/Cliente.cs
+/SysPecNSLib/Endereco.cs
+/SysPecNSDesk/FrmClienteNovo.cs
+*.cs
+/SysPecNSDesk/FrmClienteNovo.resx
