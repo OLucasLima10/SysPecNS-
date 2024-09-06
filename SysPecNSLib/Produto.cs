@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SysPecNSLib
 {
-    public class Produto
+    public class Produto 
     {
        
 
@@ -19,7 +19,7 @@ namespace SysPecNSLib
         public double EstoqueMinimo { get; set; }
         public double ClasseDesconto { get; set; }
         public byte[]? Imagem { get; set; }
-        public DateTime DataCad { get; set; }
+        public DateTime? DataCad { get; set; }
         public Produto() { 
            
         }
@@ -57,7 +57,7 @@ namespace SysPecNSLib
             Imagem = imagem;
             DataCad = dataCad;
         }
-        public Produto(int id, string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem, DateTime dataCad)
+        public Produto(int id, string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[]? imagem = null, DateTime? dataCad = null)
         {
             Id = id;
             CodBar = codBar;
@@ -117,7 +117,7 @@ namespace SysPecNSLib
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    (byte[])dr.GetValue(8),
+                    null,
                     dr.GetDateTime(9)
                     );
             }
@@ -140,7 +140,7 @@ namespace SysPecNSLib
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    (byte[])dr.GetValue(8),
+                    null,
                     dr.GetDateTime(9)
                     ));
             }
