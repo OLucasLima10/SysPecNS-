@@ -12,6 +12,7 @@ namespace SysPecNSLib
     /// </summary>
     public static class Banco //classe de conexão de banco de dados
     {
+        
         /// <summary>
         /// Método abrir da classe Banco é utilizado para representar comandos SQL 
         /// no servidor, cujos dados foram informados na string de conexão (strconn)

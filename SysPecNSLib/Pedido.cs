@@ -62,17 +62,120 @@ namespace SysPecNSLib
             Id = Convert.ToInt32(cmd.ExecuteScalar());
 
         }
-        public void Alterar() { }
+        public void AlterarStatus() 
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"update pedidos set status = {Status} where id = {Id}";
+            cmd.ExecuteNonQuery();
+
+        }
+        public void AtualizarDesconto()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"update pedidos set desconto = {Desconto} where id = {Id}";
+            cmd.ExecuteNonQuery();
+        }
         public static Pedido ObterPorId(int id) 
         {
             Pedido pedido = new();
-            ObterLista();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"select * from pedidos where id = {id}";
+            var dr = cmd.ExecuteReader();
+            // retorna 1 registro ou nenhum registro
+            if (dr.Read())
+            {
+                pedido = new(
+                    dr.GetInt32(0),
+                    Usuario.ObterPorId(dr.GetInt32(1)),
+                    Cliente.ObterPorId(dr.GetInt32(2)),
+                    dr.GetDateTime(3),
+                    dr.GetString(4),
+                    dr.GetDouble(5)
+                    //[Incluir Lista de Itens]
+                    // ,ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
+                     );
+            }
+
             return pedido;
         }
-        public static List<Pedido> ObterLista(int idCliente=0, int idUsuario=0)
+        public static List<Pedido> ObterLista()
         {
             List<Pedido> pedidos = new();
-
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"select * from pedidos";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                pedidos.Add(
+                    new(
+                    dr.GetInt32(0),
+                    Usuario.ObterPorId(dr.GetInt32(1)),
+                    Cliente.ObterPorId(dr.GetInt32(2)),
+                    dr.GetDateTime(3),
+                    dr.GetString(4),
+                    dr.GetDouble(5)
+                     //[Incluir Lista de Itens]
+                     // ,ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
+                     )
+                    );
+            }
+            return pedidos;
+        }
+        /// <summary>
+        /// Este ... por id de cliente...
+        /// </summary>
+        /// <param name="id">id do cliente</param>
+        /// <returns>lista de pedidos do cliente informado, caso haja.</returns>
+        public static List<Pedido> ObterListaPorCLiente(int id)
+        {
+            List<Pedido> pedidos = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"select * from pedidos where cliente_id = {id}";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                pedidos.Add(
+                    new(
+                    dr.GetInt32(0),
+                    Usuario.ObterPorId(dr.GetInt32(1)),
+                    Cliente.ObterPorId(dr.GetInt32(2)),
+                    dr.GetDateTime(3),
+                    dr.GetString(4),
+                    dr.GetDouble(5)
+                     //[Incluir Lista de Itens]
+                     // ,ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
+                     )
+                    );
+            }
+            return pedidos;
+        }
+        public static List<Pedido> ObterListaPorUsuario(int id)
+        {
+            List<Pedido> pedidos = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"select * from pedidos where usuario_id = {id}";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                pedidos.Add(
+                    new(
+                    dr.GetInt32(0),
+                    Usuario.ObterPorId(dr.GetInt32(1)),
+                    Cliente.ObterPorId(dr.GetInt32(2)),
+                    dr.GetDateTime(3),
+                    dr.GetString(4),
+                    dr.GetDouble(5)
+                     //[Incluir Lista de Itens]
+                     // ,ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
+                     )
+                    );
+            }
             return pedidos;
         }
 
