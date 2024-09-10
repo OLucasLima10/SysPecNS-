@@ -123,6 +123,29 @@ namespace SysPecNSLib
             }
             return produto;
         }
+        public static Produto ObterPorId(string id)
+        {
+            Produto produto = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from produtos where cod_barras = '{id}'";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                produto = new(
+                    dr.GetInt32(0),
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    dr.GetDouble(3),
+                    dr.GetString(4),
+                    Categoria.ObterPorId(dr.GetInt32(5)),
+                    dr.GetDouble(6),
+                    dr.GetDouble(7),
+                    null,
+                    dr.GetDateTime(9)
+                    );
+            }
+            return produto;
+        }
         public static List<Produto> ObterLista()
         {
            List<Produto> produtos = new();

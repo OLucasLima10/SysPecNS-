@@ -101,6 +101,7 @@ namespace SysPecNSLib
 
             return pedido;
         }
+
         public static List<Pedido> ObterLista()
         {
             List<Pedido> pedidos = new();

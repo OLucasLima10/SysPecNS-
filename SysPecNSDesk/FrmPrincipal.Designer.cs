@@ -40,6 +40,8 @@
             novoToolStripMenuItem2 = new ToolStripMenuItem();
             movimentoToolStripMenuItem = new ToolStripMenuItem();
             pedidosToolStripMenuItem = new ToolStripMenuItem();
+            novoToolStripMenuItem3 = new ToolStripMenuItem();
+            listaDePedidosToolStripMenuItem = new ToolStripMenuItem();
             operaçãoToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
             sairToolStripMenuItem = new ToolStripMenuItem();
@@ -128,9 +130,23 @@
             // 
             // pedidosToolStripMenuItem
             // 
+            pedidosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem3, listaDePedidosToolStripMenuItem });
             pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            pedidosToolStripMenuItem.Size = new Size(116, 22);
+            pedidosToolStripMenuItem.Size = new Size(180, 22);
             pedidosToolStripMenuItem.Text = "&Pedidos";
+            // 
+            // novoToolStripMenuItem3
+            // 
+            novoToolStripMenuItem3.Name = "novoToolStripMenuItem3";
+            novoToolStripMenuItem3.Size = new Size(180, 22);
+            novoToolStripMenuItem3.Text = "&Novo";
+            novoToolStripMenuItem3.Click += novoToolStripMenuItem3_Click;
+            // 
+            // listaDePedidosToolStripMenuItem
+            // 
+            listaDePedidosToolStripMenuItem.Name = "listaDePedidosToolStripMenuItem";
+            listaDePedidosToolStripMenuItem.Size = new Size(180, 22);
+            listaDePedidosToolStripMenuItem.Text = "&Lista de Pedidos";
             // 
             // operaçãoToolStripMenuItem
             // 
@@ -209,5 +225,7 @@
         private ToolStripMenuItem sairToolStripMenuItem;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripMenuItem novoToolStripMenuItem3;
+        private ToolStripMenuItem listaDePedidosToolStripMenuItem;
     }
 }
