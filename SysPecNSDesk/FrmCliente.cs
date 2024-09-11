@@ -16,5 +16,16 @@ namespace SysPecNSDesk
         {
             InitializeComponent();
         }
+
+        private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // criar a regra para obter o id do cliente...
+            Close();
+        }
+
+        private void dgvClientes_DoubleClick(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

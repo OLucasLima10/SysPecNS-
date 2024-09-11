@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             grbIndentificacao = new GroupBox();
+            button1 = new Button();
             btnInserePedido = new Button();
-            label4 = new Label();
             txtIdCliente = new TextBox();
             textBox3 = new TextBox();
             txtUsuario = new TextBox();
             label3 = new Label();
             grbItens = new GroupBox();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
             textBox1 = new TextBox();
             label10 = new Label();
             label9 = new Label();
@@ -69,8 +71,7 @@
             label12 = new Label();
             label13 = new Label();
             label14 = new Label();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
+            label4 = new Label();
             grbIndentificacao.SuspendLayout();
             grbItens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItensPedido).BeginInit();
@@ -78,8 +79,8 @@
             // 
             // grbIndentificacao
             // 
+            grbIndentificacao.Controls.Add(button1);
             grbIndentificacao.Controls.Add(btnInserePedido);
-            grbIndentificacao.Controls.Add(label4);
             grbIndentificacao.Controls.Add(txtIdCliente);
             grbIndentificacao.Controls.Add(textBox3);
             grbIndentificacao.Controls.Add(txtUsuario);
@@ -91,6 +92,20 @@
             grbIndentificacao.TabStop = false;
             grbIndentificacao.Text = "Identificação";
             // 
+            // button1
+            // 
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Image = Properties.Resources.Search;
+            button1.Location = new Point(34, 87);
+            button1.Name = "button1";
+            button1.Size = new Size(87, 40);
+            button1.TabIndex = 3;
+            button1.Text = "Cliente";
+            button1.TextImageRelation = TextImageRelation.TextBeforeImage;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // btnInserePedido
             // 
             btnInserePedido.Location = new Point(506, 44);
@@ -101,19 +116,10 @@
             btnInserePedido.UseVisualStyleBackColor = true;
             btnInserePedido.Click += btnInserePedido_Click;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(34, 100);
-            label4.Name = "label4";
-            label4.Size = new Size(44, 15);
-            label4.TabIndex = 2;
-            label4.Text = "Cliente";
-            // 
             // txtIdCliente
             // 
             txtIdCliente.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtIdCliente.Location = new Point(92, 93);
+            txtIdCliente.Location = new Point(127, 93);
             txtIdCliente.Name = "txtIdCliente";
             txtIdCliente.Size = new Size(78, 27);
             txtIdCliente.TabIndex = 0;
@@ -122,9 +128,9 @@
             // textBox3
             // 
             textBox3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(176, 93);
+            textBox3.Location = new Point(209, 93);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(288, 27);
+            textBox3.Size = new Size(255, 27);
             textBox3.TabIndex = 1;
             // 
             // txtUsuario
@@ -147,6 +153,7 @@
             // 
             // grbItens
             // 
+            grbItens.Controls.Add(label4);
             grbItens.Controls.Add(radioButton2);
             grbItens.Controls.Add(radioButton1);
             grbItens.Controls.Add(textBox1);
@@ -170,6 +177,28 @@
             grbItens.TabIndex = 1;
             grbItens.TabStop = false;
             grbItens.Text = "Itens do Pedido";
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Checked = true;
+            radioButton2.Location = new Point(463, 40);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(47, 19);
+            radioButton2.TabIndex = 14;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "Real";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(463, 22);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(81, 19);
+            radioButton1.TabIndex = 14;
+            radioButton1.Text = "Percentual";
+            radioButton1.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -465,27 +494,15 @@
             label14.Text = "Total ";
             label14.Click += label14_Click;
             // 
-            // radioButton1
+            // label4
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(463, 22);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(81, 19);
-            radioButton1.TabIndex = 14;
-            radioButton1.Text = "Percentual";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            radioButton2.AutoSize = true;
-            radioButton2.Checked = true;
-            radioButton2.Location = new Point(463, 40);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(47, 19);
-            radioButton2.TabIndex = 14;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Real";
-            radioButton2.UseVisualStyleBackColor = true;
+            label4.AutoSize = true;
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(472, 87);
+            label4.Name = "label4";
+            label4.Size = new Size(23, 15);
+            label4.TabIndex = 15;
+            label4.Text = "R$ ";
             // 
             // FrmPedidoNovo
             // 
@@ -528,7 +545,6 @@
         private TextBox txtIdPedido;
         private TextBox txtUsuario;
         private TextBox textBox3;
-        private Label label4;
         private Button btnInserePedido;
         private TextBox txtIdCliente;
         private Button btnAddItem;
@@ -563,5 +579,7 @@
         private DataGridViewTextBoxColumn clnTotalItem;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
+        private Button button1;
+        private Label label4;
     }
 }
