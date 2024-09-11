@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SysPecNSDesk
 {
@@ -47,6 +48,17 @@ namespace SysPecNSDesk
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
+            if (txtDescontoPedido.Text != string.Empty)
+            {
+                double total = double.Parse(txtSubTotal.Text) - 
+                    double.Parse(txtDescontoPedido.Text) - 
+                    double.Parse(txtDescontoItens.Text) ;
+                txtTotal.Text = total.ToString("#0.00");
+            }
+            else
+            {
+                txtDescontoPedido.Text = "0,00";
+            }
 
         }
 
@@ -124,7 +136,9 @@ namespace SysPecNSDesk
             }
             textBox1.Text = total.ToString("#0.00");
             txtDescontoItens.Text = desconto.ToString("#0.00");
+            txtSubTotal.Text = (total + desconto).ToString("#0.00");
 
+            txtTotal.Text = total.ToString("#0.00");
         }
 
         private void button1_Click(object sender, EventArgs e)

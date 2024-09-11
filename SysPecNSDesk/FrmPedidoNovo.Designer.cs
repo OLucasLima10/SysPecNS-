@@ -36,6 +36,7 @@
             txtUsuario = new TextBox();
             label3 = new Label();
             grbItens = new GroupBox();
+            label4 = new Label();
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
             textBox1 = new TextBox();
@@ -62,7 +63,7 @@
             label1 = new Label();
             label2 = new Label();
             txtIdPedido = new TextBox();
-            textBox2 = new TextBox();
+            txtTotal = new TextBox();
             txtSubTotal = new TextBox();
             txtDescontoItens = new TextBox();
             btnFechar = new Button();
@@ -71,7 +72,6 @@
             label12 = new Label();
             label13 = new Label();
             label14 = new Label();
-            label4 = new Label();
             grbIndentificacao.SuspendLayout();
             grbItens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItensPedido).BeginInit();
@@ -178,6 +178,16 @@
             grbItens.TabStop = false;
             grbItens.Text = "Itens do Pedido";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(472, 87);
+            label4.Name = "label4";
+            label4.Size = new Size(23, 15);
+            label4.TabIndex = 15;
+            label4.Text = "R$ ";
+            // 
             // radioButton2
             // 
             radioButton2.AutoSize = true;
@@ -209,6 +219,7 @@
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(122, 33);
             textBox1.TabIndex = 13;
+            textBox1.TextAlign = HorizontalAlignment.Right;
             // 
             // label10
             // 
@@ -415,14 +426,16 @@
             txtIdPedido.Size = new Size(181, 43);
             txtIdPedido.TabIndex = 4;
             // 
-            // textBox2
+            // txtTotal
             // 
-            textBox2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(702, 475);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(118, 29);
-            textBox2.TabIndex = 5;
+            txtTotal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTotal.Location = new Point(702, 475);
+            txtTotal.Name = "txtTotal";
+            txtTotal.ReadOnly = true;
+            txtTotal.Size = new Size(118, 29);
+            txtTotal.TabIndex = 5;
+            txtTotal.Text = "0,00";
+            txtTotal.TextAlign = HorizontalAlignment.Right;
             // 
             // txtSubTotal
             // 
@@ -431,6 +444,8 @@
             txtSubTotal.ReadOnly = true;
             txtSubTotal.Size = new Size(118, 23);
             txtSubTotal.TabIndex = 6;
+            txtSubTotal.Text = "0,00";
+            txtSubTotal.TextAlign = HorizontalAlignment.Right;
             // 
             // txtDescontoItens
             // 
@@ -439,6 +454,8 @@
             txtDescontoItens.ReadOnly = true;
             txtDescontoItens.Size = new Size(118, 23);
             txtDescontoItens.TabIndex = 7;
+            txtDescontoItens.Text = "0,00";
+            txtDescontoItens.TextAlign = HorizontalAlignment.Right;
             // 
             // btnFechar
             // 
@@ -455,6 +472,8 @@
             txtDescontoPedido.Name = "txtDescontoPedido";
             txtDescontoPedido.Size = new Size(118, 23);
             txtDescontoPedido.TabIndex = 8;
+            txtDescontoPedido.Text = "0,00";
+            txtDescontoPedido.TextAlign = HorizontalAlignment.Right;
             txtDescontoPedido.TextChanged += textBox6_TextChanged;
             // 
             // label11
@@ -494,16 +513,6 @@
             label14.Text = "Total ";
             label14.Click += label14_Click;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.ForeColor = Color.Red;
-            label4.Location = new Point(472, 87);
-            label4.Name = "label4";
-            label4.Size = new Size(23, 15);
-            label4.TabIndex = 15;
-            label4.Text = "R$ ";
-            // 
             // FrmPedidoNovo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -516,7 +525,7 @@
             Controls.Add(txtDescontoPedido);
             Controls.Add(txtDescontoItens);
             Controls.Add(txtSubTotal);
-            Controls.Add(textBox2);
+            Controls.Add(txtTotal);
             Controls.Add(txtIdPedido);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -561,7 +570,7 @@
         private TextBox txtQuantidade;
         private TextBox textBox1;
         private Label label10;
-        private TextBox textBox2;
+        private TextBox txtTotal;
         private TextBox txtSubTotal;
         private TextBox txtDescontoItens;
         private Button btnFechar;
